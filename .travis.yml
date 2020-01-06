@@ -42,6 +42,11 @@ env:
     init='/usr/lib/systemd/systemd'
     run_opts='--privileged'
     playbook='test.yml'
+  - distribution='centos'
+    version='8'
+    init='/usr/lib/systemd/systemd'
+    run_opts='--privileged'
+    playbook='test.yml'
 #  - distribution: alpine
 #    version: 3.4
 #    init: /sbin/init
