@@ -93,16 +93,16 @@
     tags:
       - loki
 
-  # - name: Loki | Template upgrade script
-  #   template:
-  #      src: "{{ role_dir }}/templates/upgrade.sh.j2"
-  #      dest: "{{ loki_base_dir }}/upgrade.sh"
-  #      owner: root
-  #      group: root
-  #      mode: "u=rwx,g=rx"
-  #   become: yes
-  #   tags:
-  #     - loki
+  - name: Loki | Template upgrade script
+    template:
+       src: "templates/upgrade.sh.j2"
+       dest: "{{ loki_base_dir }}/upgrade.sh"
+       owner: root
+       group: root
+       mode: "u=rwx,g=rwx"
+    become: yes
+    tags:
+      - loki
 
   - name: Loki | Configuring systemd file
     template:

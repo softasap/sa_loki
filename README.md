@@ -30,6 +30,17 @@ roles:
        }
 ```
 
+Connecting clients
+------------------
+
+In difference from prometheus, Loki uses push concept. I.e. promtail clients are pushing payload to loki cluster.
+It works like a charm in AWS or similar cloud, when you are using private addresses, but if you do not have private network,
+most likely you will need to limit access a bit...
+
+```
+sudo ufw allow from 192.168.1.215 proto tcp to any port 3100
+```
+
 Usage with ansible galaxy workflow
 ----------------------------------
 
