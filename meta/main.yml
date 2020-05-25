@@ -26,6 +26,7 @@ galaxy_info:
 #        - trusty
         - xenial
         - bionic
+        - focal
     - name: EL
       versions:
 #        - 6
