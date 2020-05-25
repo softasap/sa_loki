@@ -11,7 +11,7 @@ Simple
 
      - {
          role: "sa_loki",
-         loki_version: "1.2.0"
+         loki_version: "1.5.0"
        }
 ```
 
@@ -23,7 +23,7 @@ roles:
 
      - {
          role: "sa_loki",
-         loki_version: "1.2.0",
+         loki_version: "1.5.0",
          loki_user:   loki,
          loki_group:  loki,
          loki_base_dir: /opt/loki
