@@ -1,14 +1,17 @@
 ---
   - name: Loki | Dependencies
     package:
-       name: unzip
+       name:
+        - unzip
        state: present
     become: yes
     tags:
       - loki
 
   - name: Loki | create group
-    group: name={{ loki_group }}  state=present
+    group:
+       name: "{{ loki_group }}"
+       state: present
     become: yes
     tags:
       - loki

@@ -1,4 +1,4 @@
 ---
 # tasks file for sa_loki
 
-  - include: tasks_loki.yml
+  - include_tasks: tasks_loki.yml
