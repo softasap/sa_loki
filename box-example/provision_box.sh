@@ -50,10 +50,10 @@ trap 'rm -rf ${TMP_OUTPUT} ${TMP_INVENTORY}' \
 
 if [[ -d $BOX_ADDRESS ]]; then
     echo "$BOX_ADDRESS supposed to be directory based inventory"
-		BOX_INVENTORY=$BOX_ADDRESS
+                BOX_INVENTORY=$BOX_ADDRESS
 elif [[ -f $BOX_ADDRESS ]]; then
     echo "$BOX_ADDRESS supposed to be file based inventory"
-		BOX_INVENTORY=$BOX_ADDRESS
+                BOX_INVENTORY=$BOX_ADDRESS
 else
     echo "$BOX_ADDRESS supposed to be direct address of the host, generating temporary inventory"
     BOX_INVENTORY=$TMP_INVENTORY
