@@ -29,6 +29,7 @@
       state: "directory"
       owner: "{{ loki_user }}"
       group: "{{ loki_group }}"
+      mode: '0755'
     become: yes
     tags:
       - loki
@@ -39,6 +40,7 @@
       state: "directory"
       owner: "root"
       group: "{{ loki_group }}"
+      mode: '0755'
     become: yes
     tags:
       - loki
@@ -57,6 +59,7 @@
       src: "{{ loki_dist_location }}"
       dest: "{{ loki_base_dir }}"
       remote_src: yes
+      mode: u+rw,g-wx,o-rwx
     become: yes
     tags:
       - loki
@@ -120,4 +123,3 @@
     become: yes
     tags:
       - loki
-
