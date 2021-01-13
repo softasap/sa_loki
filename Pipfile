@@ -7,8 +7,9 @@ verify_ssl = true
 
 [packages]
 ansible = "==2.9.6"
-molecule = "==3.0.2"
+molecule = "==3.2.0"
 molecule-vagrant = "*"
+molecule-docker = "*"
 molecule-digitalocean = "*"
 pytest-molecule = "*"
 molecule-ec2 = "*"
