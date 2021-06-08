@@ -9,5 +9,14 @@ loki_dir: "{{ loki_base_dir }}"
 loki_config_dir: /etc/loki
 loki_version: "2.0.0"
 
-loki_dist_url: "https://github.com/grafana/loki/releases/download/v{{ loki_version }}/loki-linux-amd64.zip"
-loki_dist_location: "{{ loki_base_dir }}/loki-linux-amd64.zip"
+architecture_map:
+  amd64: amd64
+  x86_64: amd64
+  armv7l: arm
+  aarch64: arm64
+  32-bit: "386"
+  64-bit: amd64
+loki_architecture: "{{ architecture_map[ansible_architecture] }}"
+
+loki_dist_url: "https://github.com/grafana/loki/releases/download/v{{ loki_version }}/loki-linux-{{ loki_architecture }}.zip"
+loki_dist_location: "{{ loki_base_dir }}/loki-linux-{{ loki_architecture }}.zip"
