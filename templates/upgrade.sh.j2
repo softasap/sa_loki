@@ -2,11 +2,11 @@
 
 LOKI_VERSION="{{ loki_version }}"
 cd {{ loki_base_dir }}
-wget  https://github.com/grafana/loki/releases/download/${LOKI_VERSION}/loki-linux-amd64.zip
+wget  https://github.com/grafana/loki/releases/download/${LOKI_VERSION}/loki-linux-{{ loki_architecture }}.zip
 sudo service loki stop
-unzip loki-linux-amd64.zip
-sudo chown -R {{ loki_user }}:root {{ loki_base_dir }}/loki-linux-amd64
-sudo chmod +x {{ loki_base_dir }}/loki-linux-amd64
+unzip loki-linux-{{ loki_architecture }}.zip
+sudo chown -R {{ loki_user }}:root {{ loki_base_dir }}/loki-linux-{{ loki_architecture }}
+sudo chmod +x {{ loki_base_dir }}/loki-linux-{{ loki_architecture }}
 #             Source                                  Link
-sudo ln -f -s {{ loki_base_dir }}/loki-linux-amd64 {{ loki_base_dir }}/loki
+sudo ln -f -s {{ loki_base_dir }}/loki-linux-{{ loki_architecture }} {{ loki_base_dir }}/loki
 sudo service loki start
