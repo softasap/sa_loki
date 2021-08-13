@@ -5,11 +5,6 @@
 
   vars:
     ansible_python_interpreter: auto
-
-  pre_tasks:
-    - debug: var="role_under_test"
-  vars:
-    ansible_python_interpreter: auto
 #  roles:
 #    - {
 #        role: "{{ role_under_test | default('role_under_test') }}",
@@ -17,6 +12,19 @@
 #        docker_test: true,
 #        preferred_python_version: "3"
 #      }
+  pre_tasks:
+    - name: Update packages
+      apt: update_cache=yes
+      when: ansible_pkg_mgr=="apt"
+
+    - name: Update packages
+      dnf: update_cache=yes
+      when: ansible_pkg_mgr=="dnf"
+
+    - name: Update packages
+      yum: update_cache=yes
+      when: ansible_pkg_mgr=="yum"
+
   tasks:
    - name: Apply role runtime
      include_role:
