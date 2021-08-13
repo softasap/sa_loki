@@ -21,9 +21,6 @@ loki_architecture: "{{ architecture_map[ansible_architecture] }}"
 loki_dist_url: "https://github.com/grafana/loki/releases/download/v{{ loki_version }}/loki-linux-{{ loki_architecture }}.zip"
 loki_dist_location: "{{ loki_base_dir }}/loki-linux-{{ loki_architecture }}.zip"
 
-loki_dist_url: "https://github.com/grafana/loki/releases/download/v{{ loki_version }}/loki-linux-{{ loki_architecture }}.zip"
-loki_dist_location: "{{ loki_base_dir }}/loki-linux-{{ loki_architecture }}.zip"
-
 logcli_dist_url: "https://github.com/grafana/loki/releases/download/v{{ loki_version }}/logcli-linux-{{ loki_architecture }}.zip"
 logcli_dist_location: "{{ loki_base_dir }}/loki-linux-{{ loki_architecture }}.zip"
 
@@ -31,4 +28,3 @@ promtail_dist_url: "https://github.com/grafana/loki/releases/download/v{{ loki_v
 promtail_dist_location: "{{ loki_base_dir }}/promtail-linux-{{ loki_architecture }}.zip"
 
 loki_enable_ruler: false
-
