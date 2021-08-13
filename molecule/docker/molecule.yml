@@ -23,3 +23,19 @@ provisioner:
       instance:
         foo: bar
         role_under_test: ${MOLECULE_TEST_ROLE:-role_under_test}
+scenario:
+  name: default
+  test_sequence:
+    - dependency
+    - lint
+    - cleanup
+    - destroy
+    - syntax
+    - create
+    - prepare
+    - converge
+#    - idempotence
+    - side_effect
+    - verify
+    - cleanup
+    - destroy

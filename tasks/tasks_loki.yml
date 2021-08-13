@@ -71,7 +71,7 @@
 
   - name: Loki | Specify permissions
     file:
-      dest: "{{ loki_base_dir }}/loki-linux-{{ loki_architecture }}"
+      dest: "{{ loki_base_dir }}/loki-linux-{{ package_architecture }}"
       mode: "u=rwx,g=rx,o=rx"
       owner: "root"
       group: "{{ loki_group }}"
@@ -81,7 +81,7 @@
 
   - name: Loki | link distrution
     file:
-      src: "{{ loki_base_dir }}/loki-linux-{{ loki_architecture }}"
+      src: "{{ loki_base_dir }}/loki-linux-{{ package_architecture }}"
       dest: "{{ loki_base_dir }}/loki"
       owner: "root"
       group: "{{ loki_group }}"
@@ -150,7 +150,7 @@
 
   - name: LogCli | Specify permissions
     file:
-      dest: "{{ loki_base_dir }}/logcli-linux-{{ loki_architecture }}"
+      dest: "{{ loki_base_dir }}/logcli-linux-{{ package_architecture }}"
       mode: "u=rwx,g=rx,o=rx"
       owner: "root"
       group: "{{ loki_group }}"
@@ -160,7 +160,7 @@
 
   - name: LogCli | link distrution
     file:
-      src: "{{ loki_base_dir }}/logcli-linux-{{ loki_architecture }}"
+      src: "{{ loki_base_dir }}/logcli-linux-{{ package_architecture }}"
       dest: "{{ loki_base_dir }}/logcli"
       owner: "root"
       group: "{{ loki_group }}"
@@ -190,7 +190,7 @@
 
   - name: PromTail | Specify permissions
     file:
-      dest: "{{ loki_base_dir }}/promtail-linux-{{ loki_architecture }}"
+      dest: "{{ loki_base_dir }}/promtail-linux-{{ package_architecture }}"
       mode: "u=rwx,g=rx,o=rx"
       owner: "root"
       group: "{{ loki_group }}"
@@ -200,7 +200,7 @@
 
   - name: PromTail | link distrution
     file:
-      src: "{{ loki_base_dir }}/promtail-linux-{{ loki_architecture }}"
+      src: "{{ loki_base_dir }}/promtail-linux-{{ package_architecture }}"
       dest: "{{ loki_base_dir }}/promtail"
       owner: "root"
       group: "{{ loki_group }}"
