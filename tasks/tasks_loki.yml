@@ -1,12 +1,17 @@
 ---
   - name: Loki | Dependencies
-    package: name=unzip state=present
+    package:
+       name:
+        - unzip
+       state: present
     become: yes
     tags:
       - loki
 
   - name: Loki | create group
-    group: name={{ loki_group }}  state=present
+    group:
+       name: "{{ loki_group }}"
+       state: present
     become: yes
     tags:
       - loki
@@ -66,7 +71,7 @@
 
   - name: Loki | Specify permissions
     file:
-      dest: "{{ loki_base_dir }}/loki-linux-amd64"
+      dest: "{{ loki_base_dir }}/loki-linux-{{ package_architecture }}"
       mode: "u=rwx,g=rx,o=rx"
       owner: "root"
       group: "{{ loki_group }}"
@@ -76,7 +81,7 @@
 
   - name: Loki | link distrution
     file:
-      src: "{{ loki_base_dir }}/loki-linux-amd64"
+      src: "{{ loki_base_dir }}/loki-linux-{{ package_architecture }}"
       dest: "{{ loki_base_dir }}/loki"
       owner: "root"
       group: "{{ loki_group }}"
@@ -120,6 +125,86 @@
   - name: Loki  | Configuring startup
     service: name="loki" state="started" enabled="yes"
     when: docker_test is not defined
+    become: yes
+    tags:
+      - loki
+
+  - name: LogCli | Download distribution
+    get_url:
+      url: "{{ logcli_dist_url }}"
+      dest: "{{ logcli_dist_location }}"
+    become: yes
+    become_user: "{{ loki_user }}"
+    tags:
+      - loki
+
+  - name: LogCli | unpack distribution
+    unarchive:
+      src: "{{ logcli_dist_location }}"
+      dest: "{{ loki_base_dir }}"
+      remote_src: yes
+      mode: u+rw,g-wx,o-rwx
+    become: yes
+    tags:
+      - loki
+
+  - name: LogCli | Specify permissions
+    file:
+      dest: "{{ loki_base_dir }}/logcli-linux-{{ package_architecture }}"
+      mode: "u=rwx,g=rx,o=rx"
+      owner: "root"
+      group: "{{ loki_group }}"
+    become: yes
+    tags:
+      - loki
+
+  - name: LogCli | link distrution
+    file:
+      src: "{{ loki_base_dir }}/logcli-linux-{{ package_architecture }}"
+      dest: "{{ loki_base_dir }}/logcli"
+      owner: "root"
+      group: "{{ loki_group }}"
+      state: link
+    become: yes
+    tags:
+      - loki
+
+  - name: PromTail | Download distribution
+    get_url:
+      url: "{{ promtail_dist_url }}"
+      dest: "{{ promtail_dist_location }}"
+    become: yes
+    become_user: "{{ loki_user }}"
+    tags:
+      - loki
+
+  - name: PromTail | unpack distribution
+    unarchive:
+      src: "{{ promtail_dist_location }}"
+      dest: "{{ loki_base_dir }}"
+      remote_src: yes
+      mode: u+rw,g-wx,o-rwx
+    become: yes
+    tags:
+      - loki
+
+  - name: PromTail | Specify permissions
+    file:
+      dest: "{{ loki_base_dir }}/promtail-linux-{{ package_architecture }}"
+      mode: "u=rwx,g=rx,o=rx"
+      owner: "root"
+      group: "{{ loki_group }}"
+    become: yes
+    tags:
+      - loki
+
+  - name: PromTail | link distrution
+    file:
+      src: "{{ loki_base_dir }}/promtail-linux-{{ package_architecture }}"
+      dest: "{{ loki_base_dir }}/promtail"
+      owner: "root"
+      group: "{{ loki_group }}"
+      state: link
     become: yes
     tags:
       - loki

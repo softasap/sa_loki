@@ -2,6 +2,7 @@ sa_loki
 =======
 
 [![Build Status](https://travis-ci.com/softasap/sa_loki.svg?branch=master)](https://travis-ci.com/softasap/sa_loki)
+[![Build Status](https://github.com/softasap/sa_loki/workflows/CI/badge.svg?event=push)](https://github.com/softasap/sa_loki/actions?query=workflow%3ACI)
 
 Example of usage:
 
@@ -26,7 +27,8 @@ roles:
          loki_version: "1.5.0",
          loki_user:   loki,
          loki_group:  loki,
-         loki_base_dir: /opt/loki
+         loki_base_dir: /opt/loki,
+         loki_enable_ruler: true
        }
 ```
 

@@ -3,6 +3,7 @@ box-example/roles
 tempfile
 local*.sh
 .idea
+.vscode
 __pycache__
 **/*/__pycache__
 *.pyc
