@@ -24,7 +24,7 @@ provisioner:
         foo: bar
         role_under_test: ${MOLECULE_TEST_ROLE:-role_under_test}
 scenario:
-  name: default
+  name: docker
   test_sequence:
     - dependency
     - lint
