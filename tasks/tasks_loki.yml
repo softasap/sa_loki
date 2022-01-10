@@ -50,6 +50,18 @@
     tags:
       - loki
 
+  - name: Loki | Ensure wal folder
+    file:
+      path: "{{ loki_wal_dir }}"
+      state: "directory"
+      owner: "{{ loki_user }}"
+      group: "{{ loki_group }}"
+      mode: '0755'
+    become: yes
+    when: loki_wal_enabled|bool
+    tags:
+      - loki
+
   - name: Loki | Download distribution
     get_url:
       url: "{{ loki_dist_url }}"
